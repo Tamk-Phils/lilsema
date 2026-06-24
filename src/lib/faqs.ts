@@ -7,7 +7,7 @@ export const contactFaqs = [
   {
     question: "Where are you located?",
     answer:
-      "Based in Douala, Cameroon, with availability for travel across the country for weddings, events, and commercial projects.",
+      "Based in Yaounde, Cameroon, with availability for travel across the country for weddings, events, and commercial projects.",
   },
   {
     question: "Do you offer drone shots?",
@@ -25,7 +25,7 @@ export const contactFaqs = [
       "Portraits, weddings, corporate branding, concerts, music videos, commercial shoots, and cinematic event coverage throughout Cameroon.",
   },
   {
-    question: "Do you travel outside Douala?",
+    question: "Do you travel outside Yaounde?",
     answer:
       "Yes. Lil Sema travels across Cameroon for major events and is available for destination shoots by arrangement.",
   },

@@ -26,13 +26,13 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   ...createPageMetadata({
-    title: "Lil Sema's Pro Shots | Photographer & Videographer in Douala, Cameroon",
+    title: "Lil Sema's Pro Shots | Photographer & Videographer in Yaounde, Cameroon",
     description: siteConfig.description,
     path: "/",
     ogImageAlt: "Lil Sema's Pro Shots — Professional Photography in Cameroon",
   }),
   title: {
-    default: "Lil Sema's Pro Shots | Photographer & Videographer in Douala, Cameroon",
+    default: "Lil Sema's Pro Shots | Photographer & Videographer in Yaounde, Cameroon",
     template: `%s | ${siteConfig.name}`,
   },
   applicationName: siteConfig.name,

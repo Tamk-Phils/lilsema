@@ -63,7 +63,7 @@ export default function Hero() {
                 <div className="relative h-full w-full overflow-hidden rounded-[1.3rem] bg-white/5 md:rounded-[1.8rem]">
                   <Image
                     src={src}
-                    alt={i === 0 ? 'Cinematic event videography by Lil Sema in Douala, Cameroon' : 'High‑detail portrait photography session by Lil Sema'}
+                    alt={i === 0 ? 'Cinematic event videography by Lil Sema in Yaounde, Cameroon' : 'High‑detail portrait photography session by Lil Sema'}
                     fill
                     sizes="(max-width: 768px) 30vw, 20vw"
                     className="object-cover transition-transform duration-500 hover:scale-110"

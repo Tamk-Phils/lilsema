@@ -17,12 +17,12 @@ const Stats3D = dynamic(() => import("@/components/Stats3D"));
 const LatestGallery = dynamic(() => import("@/components/LatestGallery"));
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Lil Sema's Pro Shots | Photographer & Videographer in Douala, Cameroon",
+  title: "Lil Sema's Pro Shots | Photographer & Videographer in Yaounde, Cameroon",
   description:
-    "Premium photography and cinematic videography by Lil Sema in Douala, Cameroon. Weddings, portraits, events, music videos, and commercial shoots with professional mobile technology.",
+    "Premium photography and cinematic videography by Lil Sema in Yaounde, Cameroon. Weddings, portraits, events, music videos, and commercial shoots with professional mobile technology.",
   path: "/",
   keywords: [
-    "best photographer Douala",
+    "best photographer Yaounde",
     "Cameroon wedding photographer",
     "cinematic photography Cameroon",
   ],

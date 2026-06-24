@@ -4,13 +4,13 @@ import { contactFaqs } from "@/lib/faqs";
 import { breadcrumbJsonLd, createPageMetadata, faqJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Contact & Book a Session — Lil Sema Photography Douala",
+  title: "Contact & Book a Session — Lil Sema Photography Yaounde",
   description:
-    "Book Lil Sema for photography and videography in Cameroon. WhatsApp +237 682 385 567, email contact@lilsema.com. Based in Douala — available for weddings, portraits, events, and travel.",
+    "Book Lil Sema for photography and videography in Cameroon. WhatsApp +237 682 385 567, email contact@lilsema.com. Based in Yaounde — available for weddings, portraits, events, and travel.",
   path: "/contact",
   keywords: [
     "book photographer Cameroon",
-    "hire videographer Douala",
+    "hire videographer Yaounde",
     "wedding photographer contact",
     "photography booking Cameroon",
   ],
