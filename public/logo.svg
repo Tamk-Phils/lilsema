@@ -1,0 +1,37 @@
+<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Lil Sema's Pro Shots">
+  <defs>
+    <linearGradient id="ls-blue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#60a5fa" />
+      <stop offset="100%" stop-color="#2563eb" />
+    </linearGradient>
+  </defs>
+
+  <!-- Outer ring -->
+  <circle cx="50" cy="50" r="46" stroke="url(#ls-blue)" stroke-width="2.5" opacity="0.35" />
+  <circle cx="50" cy="50" r="38" stroke="url(#ls-blue)" stroke-width="3" />
+
+  <!-- Aperture blades -->
+  <g stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" opacity="0.55">
+    <line x1="50" y1="14" x2="50" y2="24" />
+    <line x1="50" y1="76" x2="50" y2="86" />
+    <line x1="14" y1="50" x2="24" y2="50" />
+    <line x1="76" y1="50" x2="86" y2="50" />
+    <line x1="24.5" y1="24.5" x2="31.5" y2="31.5" />
+    <line x1="68.5" y1="68.5" x2="75.5" y2="75.5" />
+    <line x1="24.5" y1="75.5" x2="31.5" y2="68.5" />
+    <line x1="68.5" y1="31.5" x2="75.5" y2="24.5" />
+  </g>
+
+  <!-- LS monogram -->
+  <path
+    d="M34 30 V58 H42 V42 H52 C58 42 62 46 62 52 C62 58 58 62 52 62 H34 V70 H54 C64 70 70 62 70 52 C70 42 64 34 54 34 H34 Z"
+    fill="#ffffff"
+  />
+  <path
+    d="M66 30 H58 V70 H74 C80 70 84 66 84 60 C84 54 80 50 74 50 H66 V30 Z M66 38 V46 H72 C74 46 76 48 76 50 C76 52 74 54 72 54 H66 V38 Z"
+    fill="url(#ls-blue)"
+  />
+
+  <!-- Lens highlight -->
+  <circle cx="38" cy="38" r="4" fill="#ffffff" opacity="0.2" />
+</svg>

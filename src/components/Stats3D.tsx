@@ -1,8 +1,7 @@
 'use client';
 
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Camera, Award, Users, Layers } from 'lucide-react';
-import { useRef } from 'react';
 
 const stats = [
   { label: 'PROJECTS COMPLETED', value: '200+', icon: Layers },
@@ -12,25 +11,15 @@ const stats = [
 ];
 
 export default function Stats3D() {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start end', 'end start'],
-  });
-  const rotateX = useTransform(scrollYProgress, [0, 0.5, 1], [18, 0, -12]);
-
   return (
-    <section ref={ref} className="relative overflow-hidden bg-black px-6 py-20">
-      <motion.div
-        style={{ rotateX }}
-        className="relative z-10 mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-12 [perspective:1200px] [transform-style:preserve-3d] md:justify-between"
-      >
+    <section className="relative overflow-hidden bg-black px-6 py-20">
+      <div className="relative z-10 mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-12 [perspective:1200px] md:justify-between">
         {stats.map((stat, i) => (
           <motion.div
             key={stat.label}
             initial={{ opacity: 0, y: 30, rotateY: -25 }}
             whileInView={{ opacity: 1, y: 0, rotateY: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-40px' }}
             transition={{ delay: i * 0.1, duration: 0.5 }}
             whileHover={{
               scale: 1.05,
@@ -48,7 +37,7 @@ export default function Stats3D() {
             </p>
           </motion.div>
         ))}
-      </motion.div>
+      </div>
       <div className="absolute top-1/2 left-1/2 z-0 h-[1px] w-full -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
     </section>
   );

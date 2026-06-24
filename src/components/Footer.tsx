@@ -7,8 +7,8 @@ export default function Footer() {
   return (
     <footer className="bg-[#050505] border-t border-white/5 pt-20 pb-10 px-6">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
-        <div className="col-span-1 md:col-span-1">
-          <Logo className="w-10 h-10 mb-6" textClassName="text-2xl" />
+        <div className="col-span-1 md:col-span-1 mb-6">
+          <Logo className="w-10 h-10" textClassName="text-2xl" />
           <p className="text-white/40 text-sm leading-relaxed mb-8">
             Capturing the essence of moments through high-end phone photography and cinematic videography. Based in Cameroon, serving the vision.
           </p>

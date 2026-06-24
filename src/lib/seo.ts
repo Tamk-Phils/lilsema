@@ -163,7 +163,7 @@ export function organizationJsonLd() {
     description: siteConfig.description,
     url: siteConfig.url,
     image: absoluteUrl("/opengraph-image"),
-    logo: absoluteUrl("/favicon.svg"),
+    logo: absoluteUrl("/logo.svg"),
     email: siteConfig.email,
     telephone: siteConfig.phone,
     priceRange: siteConfig.priceRange,

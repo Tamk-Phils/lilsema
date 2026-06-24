@@ -1,6 +1,18 @@
 <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="50" cy="50" r="45" stroke="#3b82f6" stroke-opacity="0.2" stroke-width="2" />
-  <circle cx="50" cy="50" r="35" stroke="#3b82f6" stroke-width="4" />
-  <circle cx="50" cy="50" r="15" stroke="white" stroke-width="8" />
-  <path d="M50 15V25M50 75V85M15 50H25M75 50H85M25.25 25.25L32.32 32.32M67.68 67.68L74.75 74.75M25.25 74.75L32.32 67.68M67.68 32.32L74.75 25.25" stroke="white" stroke-opacity="0.4" stroke-width="2" />
+  <defs>
+    <linearGradient id="fav-blue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#60a5fa" />
+      <stop offset="100%" stop-color="#2563eb" />
+    </linearGradient>
+  </defs>
+  <rect width="100" height="100" rx="22" fill="#050505" />
+  <circle cx="50" cy="50" r="36" stroke="url(#fav-blue)" stroke-width="3.5" />
+  <path
+    d="M36 32 V56 H42 V40 H50 C55 40 58 43 58 48 C58 53 55 56 50 56 H36 V62 H52 C60 62 66 56 66 48 C66 40 60 34 52 34 H36 Z"
+    fill="#ffffff"
+  />
+  <path
+    d="M64 32 H58 V62 H70 C75 62 78 59 78 54 C78 49 75 46 70 46 H64 V32 Z M64 38 V44 H68 C70 44 71 45 71 47 C71 49 70 50 68 50 H64 V38 Z"
+    fill="url(#fav-blue)"
+  />
 </svg>

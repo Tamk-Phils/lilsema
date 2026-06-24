@@ -20,3 +20,19 @@ export async function getGalleryImages(): Promise<GalleryImage[]> {
   if (error || !data) return [];
   return data as GalleryImage[];
 }
+
+export async function getLatestGalleryImages(
+  limit = 6
+): Promise<GalleryImage[]> {
+  const supabase = getSupabase();
+  if (!supabase) return [];
+
+  const { data, error } = await supabase
+    .from("gallery")
+    .select("id, url, category, event_name, created_at")
+    .order("created_at", { ascending: false })
+    .limit(limit);
+
+  if (error || !data) return [];
+  return data as GalleryImage[];
+}

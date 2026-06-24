@@ -1,14 +1,20 @@
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { ArrowRight, Camera, Users, Video } from "lucide-react";
 import Image from "next/image";
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
-import LatestGallery from "@/components/LatestGallery";
-import Home3DBackground from "@/components/Home3DBackground";
-import Stats3D from "@/components/Stats3D";
 import { createPageMetadata } from "@/lib/seo";
-import { getGalleryImages } from "@/lib/gallery";
+import { getLatestGalleryImages } from "@/lib/gallery";
+
+const Home3DBackground = dynamic(() => import("@/components/Home3DBackground"), {
+  loading: () => null,
+});
+
+const Stats3D = dynamic(() => import("@/components/Stats3D"));
+
+const LatestGallery = dynamic(() => import("@/components/LatestGallery"));
 
 export const metadata: Metadata = createPageMetadata({
   title: "Lil Sema's Pro Shots | Photographer & Videographer in Douala, Cameroon",
@@ -22,8 +28,10 @@ export const metadata: Metadata = createPageMetadata({
   ],
 });
 
+export const revalidate = 3600;
+
 export default async function Home() {
-  const galleryImages = await getGalleryImages();
+  const galleryImages = await getLatestGalleryImages(6);
 
   return (
     <main className="relative min-h-screen bg-black selection:bg-blue-500/30">

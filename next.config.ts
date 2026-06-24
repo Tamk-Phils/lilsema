@@ -1,7 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   images: {
     formats: ['image/avif', 'image/webp'],
     minimumCacheTTL: 60,
@@ -15,6 +14,9 @@ const nextConfig: NextConfig = {
         hostname: '**.supabase.co',
       },
     ],
+  },
+  experimental: {
+    optimizePackageImports: ['lucide-react', 'framer-motion'],
   },
 };
 

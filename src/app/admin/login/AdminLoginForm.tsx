@@ -2,7 +2,8 @@
 
 import { FormEvent, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { Loader2, Lock, LogIn } from 'lucide-react';
+import { Lock, LogIn, Loader2 } from 'lucide-react';
+import Logo from '@/components/Logo';
 
 export default function AdminLoginForm() {
   const router = useRouter();
@@ -45,15 +46,11 @@ export default function AdminLoginForm() {
     <div className="min-h-screen bg-black flex items-center justify-center p-6 selection:bg-blue-500/30">
       <div className="w-full max-w-md">
         <div className="glass-card p-10 border-white/5">
-          <div className="flex items-center gap-3 mb-8">
-            <div className="p-2 bg-blue-500/10 rounded-lg">
-              <Lock className="w-5 h-5 text-blue-500" />
-            </div>
-            <div>
-              <h1 className="text-2xl font-black tracking-tighter uppercase">Admin Login</h1>
-              <p className="text-[10px] font-bold tracking-widest text-white/30 uppercase mt-1">
-                Gallery management
-              </p>
+          <div className="flex flex-col items-center gap-4 mb-8">
+            <Logo className="w-14 h-14" textClassName="text-lg" />
+            <div className="flex items-center gap-2 text-[10px] font-bold tracking-widest text-white/30 uppercase">
+              <Lock className="w-3.5 h-3.5" />
+              Gallery management
             </div>
           </div>
 

@@ -1,12 +1,12 @@
 import { ImageResponse } from "next/og";
-import { siteConfig } from "@/lib/seo";
+import { absoluteUrl, siteConfig } from "@/lib/seo";
 
 export const runtime = "edge";
 export const alt = `${siteConfig.name} — ${siteConfig.tagline}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-export default function OpenGraphImage() {
+export default async function OpenGraphImage() {
   return new ImageResponse(
     (
       <div
@@ -21,21 +21,15 @@ export default function OpenGraphImage() {
           fontFamily: "system-ui, sans-serif",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-          <div
-            style={{
-              width: "48px",
-              height: "48px",
-              borderRadius: "12px",
-              background: "#2563eb",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: "24px",
-            }}
-          >
-            📷
-          </div>
+        <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={absoluteUrl("/logo.png")}
+            alt=""
+            width={64}
+            height={64}
+            style={{ borderRadius: "16px" }}
+          />
           <span
             style={{
               color: "rgba(255,255,255,0.5)",
@@ -45,7 +39,7 @@ export default function OpenGraphImage() {
               textTransform: "uppercase",
             }}
           >
-            Douala, Cameroon
+            Yaoundé, Cameroon
           </span>
         </div>
 
