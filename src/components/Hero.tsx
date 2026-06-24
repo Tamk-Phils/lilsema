@@ -50,7 +50,7 @@ export default function Hero() {
             <div className="relative w-full h-full rounded-[1.8rem] md:rounded-[2.8rem] overflow-hidden bg-white/5">
               <Image 
                 src={featuredShots[0]}
-                alt="Featured Pro Shot"
+                alt="Lil Sema professional portrait photography — cinematic mobile photography in Cameroon"
                 fill
                 sizes="(max-width: 768px) 50vw, 40vw"
                 className="object-cover group-hover:scale-110 transition-transform duration-1000"
@@ -67,7 +67,7 @@ export default function Hero() {
               <div className="relative w-full h-full rounded-[1.3rem] md:rounded-[1.8rem] overflow-hidden bg-white/5">
                 <Image 
                   src={featuredShots[1]}
-                  alt="Cinematic Moment"
+                  alt="Cinematic event videography by Lil Sema in Douala, Cameroon"
                   fill
                   sizes="(max-width: 768px) 30vw, 20vw"
                   className="object-cover group-hover:scale-110 transition-transform duration-1000"
@@ -81,7 +81,7 @@ export default function Hero() {
               <div className="relative w-full h-full rounded-[1.3rem] md:rounded-[1.8rem] overflow-hidden bg-white/5">
                 <Image 
                   src={featuredShots[2]}
-                  alt="Portrait Detail"
+                  alt="High-detail portrait photography session by Lil Sema"
                   fill
                   sizes="(max-width: 768px) 30vw, 20vw"
                   className="object-cover group-hover:scale-110 transition-transform duration-1000"

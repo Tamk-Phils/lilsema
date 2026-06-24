@@ -2,13 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { MessageCircle, Mail, MapPin, Camera, Phone, HelpCircle, Globe } from 'lucide-react';
-
-const faqs = [
-  { q: "How do I book a session?", a: "You can book directly via WhatsApp by clicking the button below. I usually respond within 2 hours." },
-  { q: "Where are you located?", a: "I am based in Douala, Cameroon, but I am available for travel across the country for major events." },
-  { q: "Do you offer drone shots?", a: "Yes, we offer cinematic aerial 4K drone videography and photography as part of our premium packages." },
-  { q: "What is your turnaround time?", a: "For photography, you'll receive a preview within 48 hours and the full gallery within 7-10 days." },
-];
+import { contactFaqsDisplay } from '@/lib/faqs';
 
 export default function ContactPage() {
   const whatsappNumber = "+237682385567";
@@ -99,7 +93,7 @@ export default function ContactPage() {
             <h2 className="text-4xl font-black tracking-tight">FREQUENTLY ASKED</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {faqs.map((faq, idx) => (
+            {contactFaqsDisplay.map((faq, idx) => (
               <div key={idx} className="glass-card p-8 hover:border-white/20 transition-colors">
                 <h4 className="text-xl font-bold mb-3">{faq.q}</h4>
                 <p className="text-white/50 leading-relaxed">{faq.a}</p>

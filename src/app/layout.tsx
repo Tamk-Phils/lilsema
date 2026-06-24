@@ -2,6 +2,14 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import JsonLd from "@/components/JsonLd";
+import {
+  createPageMetadata,
+  organizationJsonLd,
+  personJsonLd,
+  siteConfig,
+  websiteJsonLd,
+} from "@/lib/seo";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,12 +22,34 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Lil Sema's Pro Shots | Professional Photography & Videography",
-  description: "Premium photography and videography services by Lil Sema. Capturing cinematic moments in Cameroon.",
-  icons: {
-    icon: '/favicon.svg',
-    apple: '/favicon.svg',
+  metadataBase: new URL(siteConfig.url),
+  ...createPageMetadata({
+    title: "Lil Sema's Pro Shots | Photographer & Videographer in Douala, Cameroon",
+    description: siteConfig.description,
+    path: "/",
+    ogImageAlt: "Lil Sema's Pro Shots — Professional Photography in Cameroon",
+  }),
+  title: {
+    default: "Lil Sema's Pro Shots | Photographer & Videographer in Douala, Cameroon",
+    template: `%s | ${siteConfig.name}`,
   },
+  applicationName: siteConfig.name,
+  referrer: "origin-when-cross-origin",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  icons: {
+    icon: "/favicon.svg",
+    apple: "/favicon.svg",
+    shortcut: "/favicon.svg",
+  },
+  ...(process.env.GOOGLE_SITE_VERIFICATION && {
+    verification: {
+      google: process.env.GOOGLE_SITE_VERIFICATION,
+    },
+  }),
 };
 
 export default function RootLayout({
@@ -29,9 +59,14 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang={siteConfig.language}
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
+      <head>
+        <JsonLd
+          data={[websiteJsonLd(), organizationJsonLd(), personJsonLd()]}
+        />
+      </head>
       <body className="min-h-full flex flex-col bg-black text-white">
         <Navbar />
         {children}

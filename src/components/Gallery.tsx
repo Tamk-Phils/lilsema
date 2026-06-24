@@ -4,18 +4,25 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { supabase } from '@/lib/supabase';
+import type { GalleryImage } from '@/lib/seo';
 import { Loader2, X, ChevronLeft, ChevronRight, Layers } from 'lucide-react';
 
-export default function Gallery() {
-  const [images, setImages] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
+type GalleryProps = {
+  initialImages?: GalleryImage[];
+};
+
+export default function Gallery({ initialImages = [] }: GalleryProps) {
+  const [images, setImages] = useState<GalleryImage[]>(initialImages);
+  const [loading, setLoading] = useState(initialImages.length === 0);
   const [filter, setFilter] = useState('All');
   const [selectedEvent, setSelectedEvent] = useState<string | null>(null);
   const [viewingImageIndex, setViewingImageIndex] = useState<number | null>(null);
 
   useEffect(() => {
-    fetchImages();
-  }, []);
+    if (initialImages.length === 0) {
+      fetchImages();
+    }
+  }, [initialImages.length]);
 
   const fetchImages = async () => {
     setLoading(true);
@@ -70,8 +77,8 @@ export default function Gallery() {
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row items-end justify-between mb-16 gap-6">
           <div className="space-y-2">
-            <h2 className="text-5xl md:text-7xl font-black tracking-tighter leading-none uppercase">THE <br /> ARCHIVE</h2>
-            <p className="text-white/30 max-w-sm font-medium">Capturing the pulse of moments through cinematic framing.</p>
+            <h1 className="text-5xl md:text-7xl font-black tracking-tighter leading-none uppercase">THE <br /> ARCHIVE</h1>
+            <p className="text-white/30 max-w-sm font-medium">Photography &amp; videography portfolio — portraits, weddings, and events in Cameroon.</p>
           </div>
           <div className="flex gap-2 flex-wrap bg-white/5 p-1.5 rounded-full border border-white/5">
             {['All', 'Photography', 'Portrait', 'Event', 'Cinematic'].map((cat) => (
@@ -105,7 +112,7 @@ export default function Gallery() {
                 <div className="relative w-full aspect-[4/5] rounded-[2.2rem] overflow-hidden">
                   <Image 
                     src={group.images[0].url} 
-                    alt={group.name || "Gallery Shot"}
+                    alt={group.name ? `${group.name} — ${group.images[0].category ?? 'photography'} by Lil Sema` : `Lil Sema ${group.images[0].category ?? 'photography'} work`}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-cover transition-transform duration-1000 group-hover:scale-110"
@@ -136,6 +143,24 @@ export default function Gallery() {
               </motion.div>
             ))}
           </div>
+        )}
+
+        {!loading && images.length > 0 && (
+          <noscript>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+              {images.map((img) => (
+                <li key={img.id}>
+                  <img
+                    src={img.url}
+                    alt={img.event_name ? `${img.event_name} — ${img.category ?? 'photography'} by Lil Sema` : `Lil Sema ${img.category ?? 'photography'} portfolio`}
+                    width={400}
+                    height={500}
+                    loading="lazy"
+                  />
+                </li>
+              ))}
+            </ul>
+          </noscript>
         )}
 
         {/* Lightbox Modal */}

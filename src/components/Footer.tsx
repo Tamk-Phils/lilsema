@@ -78,8 +78,8 @@ export default function Footer() {
           © 2026 LIL SEMA'S PRO SHOTS • ALL RIGHTS RESERVED
         </p>
         <div className="flex gap-8">
-          <Link href="#" className="text-white/20 hover:text-white text-[10px] font-bold tracking-[0.2em] transition-colors uppercase">Privacy Policy</Link>
-          <Link href="#" className="text-white/20 hover:text-white text-[10px] font-bold tracking-[0.2em] transition-colors uppercase">Terms of Service</Link>
+          <Link href="/privacy" className="text-white/20 hover:text-white text-[10px] font-bold tracking-[0.2em] transition-colors uppercase">Privacy Policy</Link>
+          <Link href="/terms" className="text-white/20 hover:text-white text-[10px] font-bold tracking-[0.2em] transition-colors uppercase">Terms of Service</Link>
         </div>
       </div>
     </footer>
