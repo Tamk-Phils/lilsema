@@ -6,7 +6,7 @@ export const siteConfig = {
   tagline: "Professional Photography & Videography in Cameroon",
   description:
     "Premium photography and cinematic videography by Lil Sema in Douala, Cameroon. Weddings, portraits, events, music videos, and commercial shoots — professional quality with high-end mobile technology.",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://lilsema.com",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://semasproshots.com",
   locale: "en_CM",
   language: "en",
   email: "contact@lilsema.com",
