@@ -66,7 +66,7 @@ export default function Footer() {
               <MapPin className="w-5 h-5 text-blue-500 mt-1" />
               <div>
                 <p className="text-white text-sm font-bold">Location</p>
-                <p className="text-white/40 text-sm">Douala, Cameroon</p>
+                <p className="text-white/40 text-sm">YAOUNDE, Cameroon</p>
               </div>
             </li>
           </ul>

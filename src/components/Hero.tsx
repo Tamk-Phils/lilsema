@@ -3,98 +3,146 @@
 import { Camera, ChevronDown, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { useRef } from 'react';
 
 const featuredShots = [
-  "https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=1000&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1554048612-b6a482bc67e5?q=80&w=1000&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1520390138845-fd2d229dd553?q=80&w=1000&auto=format&fit=crop",
+  'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=1000&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1554048612-b6a482bc67e5?q=80&w=1000&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1520390138845-fd2d229dd553?q=80&w=1000&auto=format&fit=crop',
 ];
 
 export default function Hero() {
+  const gridRef = useRef<HTMLDivElement>(null);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [8, -8]), {
+    stiffness: 200,
+    damping: 25,
+  });
+  const rotateY = useSpring(useTransform(x, [-0.5, 0.5], [-10, 10]), {
+    stiffness: 200,
+    damping: 25,
+  });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!gridRef.current) return;
+    const rect = gridRef.current.getBoundingClientRect();
+    x.set((e.clientX - rect.left) / rect.width - 0.5);
+    y.set((e.clientY - rect.top) / rect.height - 0.5);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
   return (
-    <section className="relative min-h-[100svh] flex items-center justify-center overflow-hidden pt-20 bg-black">
-      {/* Background Ambience */}
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-blue-600/10 blur-[120px] rounded-full z-0 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-1/3 h-2/3 bg-blue-500/10 blur-[100px] rounded-full z-0 pointer-events-none" />
-      
-      <div className="max-w-7xl mx-auto px-6 flex flex-col lg:grid lg:grid-cols-2 gap-10 lg:gap-16 items-center relative z-10 w-full py-10 lg:py-20">
-        {/* Left Side: Text Content */}
-        <div className="space-y-6 md:space-y-8 text-center lg:text-left z-20">
-          <div className="inline-flex items-center gap-2 px-4 py-2 border border-white/10 glass-card rounded-full text-[9px] font-black tracking-[0.3em] text-blue-400 uppercase mx-auto lg:mx-0">
-            <Camera className="w-3 h-3" /> Professional Visuals
+    <section className="relative flex min-h-[100svh] items-center justify-center overflow-hidden bg-black pt-20">
+      <div className="pointer-events-none absolute top-0 right-0 z-0 h-full w-1/2 rounded-full bg-blue-600/10 blur-[120px]" />
+      <div className="pointer-events-none absolute bottom-0 left-0 z-0 h-2/3 w-1/3 rounded-full bg-blue-500/10 blur-[100px]" />
+
+      <motion.div
+        className="pointer-events-none absolute left-[5%] top-[20%] h-24 w-24 rounded-xl border border-blue-500/20"
+        style={{ transformStyle: 'preserve-3d' }}
+        animate={{ rotateX: [0, 360], rotateY: [0, 180, 360] }}
+        transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+      />
+      <motion.div
+        className="pointer-events-none absolute right-[8%] bottom-[25%] h-16 w-16 rounded-full border border-white/10"
+        animate={{ y: [0, -20, 0], rotateZ: [0, 180, 360] }}
+        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+      />
+
+      <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-10 px-6 py-10 lg:grid-cols-2 lg:gap-16 lg:py-20">
+        <motion.div
+          initial={{ opacity: 0, x: -40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          className="z-20 space-y-6 text-center md:space-y-8 lg:text-left"
+        >
+          <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-white/10 glass-card px-4 py-2 text-[9px] font-black tracking-[0.3em] text-blue-400 uppercase lg:mx-0">
+            <Camera className="h-3 w-3" /> Professional Visuals
           </div>
-          
-          <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-[7rem] font-black tracking-tighter leading-[0.9] lg:leading-[0.85] uppercase">
-            LIL SEMA<span className="text-blue-500">'</span>S <br /> 
-            <span className="bg-gradient-to-r from-white via-white to-white/40 bg-clip-text text-transparent">PRO SHOTS</span>
+
+          <h1 className="text-4xl font-black leading-[0.9] tracking-tighter uppercase sm:text-6xl md:text-8xl lg:text-[7rem] lg:leading-[0.85]">
+            LIL SEMA<span className="text-blue-500">&apos;</span>S <br />
+            <span className="bg-gradient-to-r from-white via-white to-white/40 bg-clip-text text-transparent">
+              PRO SHOTS
+            </span>
           </h1>
-          
-          <p className="text-sm md:text-xl text-white/50 max-w-lg font-medium leading-relaxed mx-auto lg:mx-0">
+
+          <p className="mx-auto max-w-lg text-sm font-medium leading-relaxed text-white/50 md:text-xl lg:mx-0">
             From raw emotion to cinematic perfection. We capture the essence of your vision through high-end digital artistry.
           </p>
-          
-          <div className="flex flex-col sm:flex-row items-center gap-4 pt-4">
-            <Link 
+
+          <div className="flex flex-col items-center gap-4 pt-4 sm:flex-row">
+            <Link
               href="/gallery"
-              className="w-full lg:w-auto px-10 py-5 bg-white text-black font-black text-[10px] tracking-widest rounded-full hover:bg-blue-600 hover:text-white transition-all transform active:scale-95 text-center flex items-center justify-center gap-3 group"
+              className="group flex w-full items-center justify-center gap-3 rounded-full bg-white px-10 py-5 text-center text-[10px] font-black tracking-widest text-black transition-all hover:bg-blue-600 hover:text-white active:scale-95 lg:w-auto"
             >
-              EXPLORE WORKS <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              EXPLORE WORKS <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
-        </div>
- 
-        {/* Right Side: Imagery Showcase */}
-        <div className="relative grid grid-cols-2 gap-3 md:gap-4 h-[300px] sm:h-[450px] lg:h-[600px] w-full z-10">
-          {/* Main Large Image */}
-          <div className="col-span-1 row-span-2 relative rounded-[2rem] md:rounded-[3rem] overflow-hidden glass-card p-1 shadow-2xl shadow-blue-500/10 active:scale-95 transition-transform duration-500 group">
-            <div className="relative w-full h-full rounded-[1.8rem] md:rounded-[2.8rem] overflow-hidden bg-white/5">
-              <Image 
+        </motion.div>
+
+        <motion.div
+          ref={gridRef}
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
+          style={{ rotateX, rotateY, transformStyle: 'preserve-3d' }}
+          className="relative z-10 grid h-[300px] w-full grid-cols-2 gap-3 [perspective:1400px] sm:h-[450px] md:gap-4 lg:h-[600px]"
+        >
+          <motion.div
+            className="relative col-span-1 row-span-2 overflow-hidden rounded-[2rem] glass-card p-1 shadow-2xl shadow-blue-500/10 md:rounded-[3rem]"
+            style={{ transform: 'translateZ(40px)' }}
+            whileHover={{ scale: 1.02 }}
+          >
+            <div className="relative h-full w-full overflow-hidden rounded-[1.8rem] bg-white/5 md:rounded-[2.8rem]">
+              <Image
                 src={featuredShots[0]}
                 alt="Lil Sema professional portrait photography — cinematic mobile photography in Cameroon"
                 fill
                 sizes="(max-width: 768px) 50vw, 40vw"
-                className="object-cover group-hover:scale-110 transition-transform duration-1000"
+                className="object-cover transition-transform duration-1000 hover:scale-110"
                 priority
                 quality={75}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-40 group-hover:opacity-70 transition-opacity" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-40" />
             </div>
+          </motion.div>
+
+          <div className="col-span-1 flex flex-col space-y-3 md:space-y-4">
+            {[featuredShots[1], featuredShots[2]].map((src, i) => (
+              <motion.div
+                key={src}
+                className="relative flex-1 overflow-hidden rounded-[1.5rem] glass-card p-1 shadow-xl shadow-black/20 md:rounded-[2rem]"
+                style={{ transform: `translateZ(${i === 0 ? 60 : 25}px)` }}
+                whileHover={{ scale: 1.03, rotateY: i === 0 ? -4 : 4 }}
+              >
+                <div className="relative h-full w-full overflow-hidden rounded-[1.3rem] bg-white/5 md:rounded-[1.8rem]">
+                  <Image
+                    src={src}
+                    alt={
+                      i === 0
+                        ? 'Cinematic event videography by Lil Sema in Douala, Cameroon'
+                        : 'High-detail portrait photography session by Lil Sema'
+                    }
+                    fill
+                    sizes="(max-width: 768px) 30vw, 20vw"
+                    className="object-cover transition-transform duration-1000 hover:scale-110"
+                    quality={75}
+                  />
+                </div>
+              </motion.div>
+            ))}
           </div>
-          
-          <div className="col-span-1 space-y-3 md:space-y-4 flex flex-col">
-            {/* Top Smaller Image */}
-            <div className="flex-1 relative rounded-[1.5rem] md:rounded-[2rem] overflow-hidden glass-card p-1 shadow-xl shadow-black/20 group cursor-pointer active:scale-95 transition-transform duration-500">
-              <div className="relative w-full h-full rounded-[1.3rem] md:rounded-[1.8rem] overflow-hidden bg-white/5">
-                <Image 
-                  src={featuredShots[1]}
-                  alt="Cinematic event videography by Lil Sema in Douala, Cameroon"
-                  fill
-                  sizes="(max-width: 768px) 30vw, 20vw"
-                  className="object-cover group-hover:scale-110 transition-transform duration-1000"
-                  quality={75}
-                />
-              </div>
-            </div>
-            
-            {/* Bottom Smaller Image */}
-            <div className="flex-1 relative rounded-[1.5rem] md:rounded-[2rem] overflow-hidden glass-card p-1 shadow-xl shadow-black/20 group cursor-pointer active:scale-95 transition-transform duration-500">
-              <div className="relative w-full h-full rounded-[1.3rem] md:rounded-[1.8rem] overflow-hidden bg-white/5">
-                <Image 
-                  src={featuredShots[2]}
-                  alt="High-detail portrait photography session by Lil Sema"
-                  fill
-                  sizes="(max-width: 768px) 30vw, 20vw"
-                  className="object-cover group-hover:scale-110 transition-transform duration-1000"
-                  quality={75}
-                />
-              </div>
-            </div>
-          </div>
-        </div>
+        </motion.div>
       </div>
 
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 opacity-30 hidden lg:block animate-bounce">
-        <ChevronDown className="w-6 h-6 text-white" />
+      <div className="absolute bottom-10 left-1/2 hidden -translate-x-1/2 animate-bounce opacity-30 lg:block">
+        <ChevronDown className="h-6 w-6 text-white" />
       </div>
     </section>
   );

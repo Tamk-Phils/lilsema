@@ -44,8 +44,8 @@ export default function ContactPage() {
                   <MapPin className="w-6 h-6 text-blue-400 group-hover:text-black" />
                 </div>
                 <div>
-                  <p className="text-xs font-black tracking-widest text-blue-400 uppercase">Studio Location</p>
-                  <p className="text-xl font-bold">Douala, Cameroon</p>
+                  <p className="text-xs font-black tracking-widest text-blue-400 uppercase">Location</p>
+                  <p className="text-xl font-bold">YAOUNDE, Cameroon</p>
                 </div>
               </div>
             </div>
