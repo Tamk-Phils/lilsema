@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import { createSupabaseAdmin } from "@/lib/supabase-server";
 
 export async function GET() {
@@ -56,6 +57,10 @@ export async function POST(request: Request) {
       uploaded.push(data);
     }
 
+    // Bust the gallery and home page cache so new images appear immediately
+    revalidatePath("/gallery");
+    revalidatePath("/");
+
     return NextResponse.json({ success: true, uploaded });
   } catch (error) {
     console.error("Upload failed:", error);
@@ -85,6 +90,10 @@ export async function DELETE(request: Request) {
     const { error } = await supabase.from("gallery").delete().match({ id });
 
     if (error) throw error;
+
+    // Bust the gallery and home page cache so deleted images disappear immediately
+    revalidatePath("/gallery");
+    revalidatePath("/");
 
     return NextResponse.json({ success: true });
   } catch (error) {

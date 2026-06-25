@@ -28,7 +28,7 @@ export const metadata: Metadata = createPageMetadata({
   ],
 });
 
-export const revalidate = 3600;
+export const revalidate = 60; // fallback: re-fetch from Supabase every 60s
 
 export default async function Home() {
   const galleryImages = await getLatestGalleryImages(6);

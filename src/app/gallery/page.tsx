@@ -4,6 +4,8 @@ import JsonLd from "@/components/JsonLd";
 import { getGalleryImages } from "@/lib/gallery";
 import { breadcrumbJsonLd, imageGalleryJsonLd } from "@/lib/seo";
 
+export const revalidate = 60; // fallback: re-fetch every 60s; on-demand revalidation from /api/admin/gallery is the primary trigger
+
 export default async function GalleryPage() {
   const images = await getGalleryImages();
 
