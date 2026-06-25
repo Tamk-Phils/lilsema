@@ -121,17 +121,25 @@ export default function Admin() {
   };
 
   return (
-    <div className="min-h-screen bg-black p-6 md:p-12 selection:bg-blue-500/30">
-      <div className="max-w-6xl mx-auto">
-        <div className="flex justify-end mb-8">
-          <button
-            onClick={handleLogout}
-            className="flex items-center gap-2 px-5 py-3 glass-card border-white/5 hover:bg-white/10 transition-all text-[10px] font-black tracking-widest uppercase"
-          >
-            <LogOut className="w-4 h-4" />
-            Sign Out
-          </button>
+    <div className="min-h-screen bg-black selection:bg-blue-500/30">
+      {/* Admin Top Bar */}
+      <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 bg-[#050505]/95 backdrop-blur-xl border-b border-white/10">
+        <div className="flex items-center gap-3">
+          <div className="w-8 h-8 rounded-lg bg-blue-600/20 flex items-center justify-center">
+            <Plus className="w-4 h-4 text-blue-400" />
+          </div>
+          <span className="text-xs font-black tracking-[0.3em] text-white/60 uppercase">Admin Panel</span>
         </div>
+        <button
+          onClick={handleLogout}
+          className="flex items-center gap-2 px-5 py-2.5 glass-card border border-white/10 hover:bg-white/10 transition-all text-[10px] font-black tracking-widest uppercase rounded-xl"
+        >
+          <LogOut className="w-4 h-4" />
+          Sign Out
+        </button>
+      </header>
+
+      <div className="max-w-6xl mx-auto pt-24 px-6 pb-12">
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           <div className="col-span-1">
