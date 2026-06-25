@@ -15,7 +15,10 @@
   --light-accent: rgba(255, 255, 255, 0.9);
 }
 
-body {
+html {
+  overflow-x: hidden;
+}
+
   background: var(--background);
   color: var(--foreground);
   font-family: 'Inter', sans-serif;
@@ -41,7 +44,20 @@ body {
   }
 }
 
-/* Custom scrollbar */
+* {
+  box-sizing: border-box;
+}
+
+img, video, picture {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Ensure sections adapt to viewport */
+section {
+  width: 100%;
+  overflow-x: hidden;
+}
 ::-webkit-scrollbar {
   width: 8px;
 }
