@@ -15,8 +15,8 @@ export default function Logo({
     <div className="flex items-center gap-2 md:gap-3">
       <LogoMark className={`shrink-0 ${className}`} />
       {showText && (
-        <span className={`font-black tracking-tighter uppercase whitespace-nowrap ${textClassName}`}>
-          Lil Sema<span className="text-blue-500">&apos;</span>s
+        <span className={`font-black tracking-tighter uppercase whitespace-nowrap text-slate-900 ${textClassName}`}>
+          Lil Sema<span className="text-blue-600">&apos;</span>s
         </span>
       )}
     </div>

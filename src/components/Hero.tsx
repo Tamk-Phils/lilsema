@@ -10,65 +10,76 @@ const featuredShots = [
 
 export default function Hero() {
   return (
-    <section className="relative flex min-h-[100svh] items-center justify-center overflow-hidden bg-black pt-20">
+    <section className="relative flex min-h-[100svh] items-center justify-center overflow-hidden bg-gradient-to-b from-slate-50 via-blue-50/30 to-slate-100 pt-28 pb-16">
       {/* Decorative background blobs */}
-      <div className="pointer-events-none absolute top-0 right-0 z-0 h-full w-1/2 rounded-full bg-blue-600/10 blur-[120px]" />
-      <div className="pointer-events-none absolute bottom-0 left-0 z-0 h-2/3 w-1/3 rounded-full bg-blue-500/10 blur-[100px]" />
+      <div className="pointer-events-none absolute top-0 right-0 z-0 h-full w-1/2 rounded-full bg-blue-400/10 blur-[120px]" />
+      <div className="pointer-events-none absolute bottom-0 left-0 z-0 h-2/3 w-1/3 rounded-full bg-blue-600/10 blur-[100px]" />
 
-      <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 gap-10 px-6 py-10 lg:grid-cols-2 lg:gap-16 lg:py-20">
+      <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 gap-12 px-6 lg:grid-cols-2 lg:gap-16 items-center">
         {/* Text block */}
-        <div className="space-y-6 text-center md:space-y-8 lg:text-left">
-          <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-white/10 glass-card px-4 py-2 text-[9px] font-black tracking-[0.3em] text-blue-400 uppercase lg:mx-0">
-            <Camera className="h-3 w-3" /> Professional Visuals
+        <div className="space-y-6 text-center lg:text-left">
+          <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-blue-200 bg-white/80 backdrop-blur-md px-4 py-2 text-[10px] font-black tracking-[0.25em] text-blue-600 uppercase lg:mx-0 shadow-sm">
+            <Camera className="h-3.5 w-3.5 text-blue-600" /> Professional Visuals
           </div>
-          <h1 className="text-4xl font-black leading-[0.9] tracking-tighter uppercase sm:text-6xl md:text-8xl lg:text-[7rem] lg:leading-[0.85]">
-            LIL SEMA<span className="text-blue-500">&apos;S</span><br />
-            <span className="bg-gradient-to-r from-white via-white to-white/40 bg-clip-text text-transparent">PRO SHOTS</span>
+          
+          <h1 className="text-5xl font-black leading-[0.95] tracking-tighter uppercase text-slate-900 sm:text-6xl md:text-7xl lg:text-[5.5rem]">
+            LIL SEMA<span className="text-blue-600">&apos;S</span><br />
+            <span className="text-slate-900">PRO SHOTS</span>
           </h1>
-          <p className="mx-auto max-w-lg text-sm font-medium leading-relaxed text-white/50 md:text-xl lg:mx-0">
-            From raw emotion to cinematic perfection. We capture the essence of your vision through high‑end digital artistry.
+
+          <p className="mx-auto max-w-lg text-base font-medium leading-relaxed text-slate-600 md:text-xl lg:mx-0">
+            From raw emotion to cinematic perfection. Capturing the essence of your vision through high-end digital artistry in Yaounde, Cameroon.
           </p>
-          <div className="flex flex-col items-center gap-4 pt-4 sm:flex-row">
+
+          <div className="flex flex-col items-center gap-4 pt-4 sm:flex-row justify-center lg:justify-start">
             <Link
               href="/gallery"
-              className="group flex w-full items-center justify-center gap-3 rounded-full bg-white px-10 py-5 text-center text-[10px] font-black tracking-widest text-black transition-all hover:bg-blue-600 hover:text-white active:scale-95 lg:w-auto"
+              className="group flex w-full items-center justify-center gap-3 rounded-full bg-blue-600 px-8 py-4 text-center text-xs font-black tracking-widest text-white transition-all hover:bg-blue-700 shadow-lg shadow-blue-500/25 active:scale-95 sm:w-auto uppercase"
             >
               EXPLORE WORKS <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Link>
+
+            <Link
+              href="/contact"
+              className="group flex w-full items-center justify-center gap-3 rounded-full bg-white border border-slate-200 px-8 py-4 text-center text-xs font-black tracking-widest text-slate-800 transition-all hover:border-blue-400 hover:text-blue-600 shadow-sm active:scale-95 sm:w-auto uppercase"
+            >
+              BOOK A SESSION
             </Link>
           </div>
         </div>
 
-        {/* Image grid – static, no 3D rotation */}
-        <div className="grid h-[300px] w-full grid-cols-2 gap-3 sm:h-[450px] md:gap-4 lg:h-[600px]">
-          <div className="relative col-span-1 row-span-2 overflow-hidden rounded-[2rem] glass-card p-1 shadow-2xl shadow-blue-500/10 md:rounded-[3rem]">
-            <div className="relative h-full w-full overflow-hidden rounded-[1.8rem] bg-white/5 md:rounded-[2.8rem]">
+        {/* Image showcase grid */}
+        <div className="grid h-[340px] w-full grid-cols-2 gap-3 sm:h-[480px] md:gap-4 lg:h-[540px]">
+          <div className="relative col-span-1 row-span-2 overflow-hidden rounded-[2rem] bg-white p-2 shadow-2xl shadow-slate-200/80 border border-slate-200/80 md:rounded-[2.5rem]">
+            <div className="relative h-full w-full overflow-hidden rounded-[1.6rem] bg-slate-100 md:rounded-[2.1rem]">
               <Image
                 src={featuredShots[0]}
-                alt="Lil Sema professional portrait photography — cinematic mobile photography in Cameroon"
+                alt="Lil Sema professional portrait photography in Yaounde, Cameroon"
                 fill
                 sizes="(max-width: 768px) 50vw, 40vw"
-                className="object-cover transition-transform duration-500 hover:scale-110"
-                quality={60}
-                loading="eager"
+                className="object-cover transition-transform duration-700 hover:scale-105"
+                quality={75}
+                priority
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-40" />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-60" />
             </div>
           </div>
+
           <div className="col-span-1 flex flex-col space-y-3 md:space-y-4">
             {[featuredShots[1], featuredShots[2]].map((src, i) => (
               <div
                 key={src}
-                className="relative flex-1 overflow-hidden rounded-[1.5rem] glass-card p-1 shadow-xl shadow-black/20 md:rounded-[2rem]"
+                className="relative flex-1 overflow-hidden rounded-[1.5rem] bg-white p-2 shadow-lg shadow-slate-200/60 border border-slate-200/80 md:rounded-[2rem]"
               >
-                <div className="relative h-full w-full overflow-hidden rounded-[1.3rem] bg-white/5 md:rounded-[1.8rem]">
+                <div className="relative h-full w-full overflow-hidden rounded-[1.1rem] bg-slate-100 md:rounded-[1.6rem]">
                   <Image
                     src={src}
-                    alt={i === 0 ? 'Cinematic event videography by Lil Sema in Yaounde, Cameroon' : 'High‑detail portrait photography session by Lil Sema'}
+                    alt={i === 0 ? 'Cinematic event videography by Lil Sema' : 'High-detail portrait shoot by Lil Sema'}
                     fill
                     sizes="(max-width: 768px) 30vw, 20vw"
-                    className="object-cover transition-transform duration-500 hover:scale-110"
-                    quality={60}
-                    loading="lazy"
+                    className="object-cover transition-transform duration-700 hover:scale-105"
+                    quality={75}
+                    loading="eager"
                   />
                 </div>
               </div>
@@ -78,8 +89,8 @@ export default function Hero() {
       </div>
 
       {/* Scroll hint */}
-      <div className="absolute bottom-10 left-1/2 hidden -translate-x-1/2 animate-bounce opacity-30 lg:block">
-        <ChevronDown className="h-6 w-6 text-white" />
+      <div className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 animate-bounce opacity-40 lg:block">
+        <ChevronDown className="h-6 w-6 text-slate-600" />
       </div>
     </section>
   );

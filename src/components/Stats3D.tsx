@@ -12,33 +12,27 @@ const stats = [
 
 export default function Stats3D() {
   return (
-    <section className="relative overflow-hidden bg-black px-6 py-20">
-      <div className="relative z-10 mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-12 [perspective:1200px] md:justify-between">
+    <section className="relative overflow-hidden bg-slate-50 border-b border-slate-200/80 px-6 py-16">
+      <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-2 md:grid-cols-4 gap-8 text-center">
         {stats.map((stat, i) => (
           <motion.div
             key={stat.label}
-            initial={{ opacity: 0, y: 30, rotateY: -25 }}
-            whileInView={{ opacity: 1, y: 0, rotateY: 0 }}
-            viewport={{ once: true, margin: '-40px' }}
-            transition={{ delay: i * 0.1, duration: 0.5 }}
-            whileHover={{
-              scale: 1.05,
-              rotateY: 8,
-              rotateX: -6,
-            }}
-            className="group flex flex-col items-center text-center [transform-style:preserve-3d]"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-20px' }}
+            transition={{ delay: i * 0.1, duration: 0.4 }}
+            className="group flex flex-col items-center justify-center p-6 rounded-3xl bg-white border border-slate-200/80 shadow-sm transition-all hover:shadow-md hover:border-blue-200"
           >
-            <div className="mb-4 rounded-2xl border border-white/10 bg-white/5 p-4 transition-colors group-hover:border-blue-500/40 group-hover:bg-blue-500/10">
-              <stat.icon className="h-8 w-8 text-blue-500 transition-transform group-hover:scale-110" />
+            <div className="mb-3 rounded-2xl bg-blue-50 p-3 text-blue-600 transition-colors group-hover:bg-blue-600 group-hover:text-white">
+              <stat.icon className="h-6 w-6" />
             </div>
-            <h4 className="mb-1 text-4xl font-black tracking-tighter">{stat.value}</h4>
-            <p className="text-[10px] font-bold tracking-[0.3em] text-white/30 uppercase">
+            <h4 className="mb-1 text-3xl md:text-4xl font-black tracking-tighter text-slate-900">{stat.value}</h4>
+            <p className="text-[9px] md:text-[10px] font-bold tracking-widest text-slate-500 uppercase">
               {stat.label}
             </p>
           </motion.div>
         ))}
       </div>
-      <div className="absolute top-1/2 left-1/2 z-0 h-[1px] w-full -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
     </section>
   );
 }
