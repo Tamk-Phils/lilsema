@@ -172,7 +172,7 @@ export default function Gallery({ initialImages = [] }: GalleryProps) {
               exit={{ opacity: 0 }}
               className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-3xl flex flex-col items-center justify-center p-4 md:p-10"
             >
-              <div className="absolute top-10 right-10 flex gap-4 z-[110]">
+              <div className="absolute top-20 md:top-10 right-4 md:right-10 flex gap-3 z-[110]">
                 {currentEventImages[viewingImageIndex || 0] && (
                   <button 
                     onClick={() => {
