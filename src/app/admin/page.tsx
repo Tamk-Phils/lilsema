@@ -1,10 +1,12 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Upload, X, CheckCircle, Loader2, Trash2, Plus, FolderSync, LogOut } from 'lucide-react';
+import { Upload, X, CheckCircle, Loader2, Trash2, Plus, FolderSync, LogOut, ExternalLink } from 'lucide-react';
 import Image from 'next/image';
+import Logo from '@/components/Logo';
 
 type GalleryItem = {
   id: number;
@@ -24,11 +26,7 @@ export default function Admin() {
   const [loading, setLoading] = useState(true);
   const [progress, setProgress] = useState(0);
 
-  useEffect(() => {
-    fetchGallery();
-  }, []);
-
-  const fetchGallery = async () => {
+  const fetchGallery = useCallback(async () => {
     setLoading(true);
     try {
       const res = await fetch('/api/admin/gallery');
@@ -43,7 +41,11 @@ export default function Admin() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [router]);
+
+  useEffect(() => {
+    fetchGallery();
+  }, [fetchGallery]);
 
   const handleLogout = async () => {
     await fetch('/api/admin/logout', { method: 'POST' });
@@ -121,35 +123,46 @@ export default function Admin() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 pt-28 pb-16">
-      {/* Dedicated Admin Top Bar underneath standard Navbar */}
-      <div className="bg-white border-b border-slate-200 shadow-sm px-6 py-4 mb-8">
+    <div className="min-h-screen bg-slate-50 text-slate-900 pb-16">
+      {/* Dedicated Admin Top Bar */}
+      <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm px-6 py-4 mb-8">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center">
-              <Plus className="w-5 h-5 text-blue-600" />
-            </div>
-            <div>
-              <h1 className="text-sm font-black tracking-widest text-slate-900 uppercase">ADMIN PORTAL</h1>
-              <p className="text-[10px] font-bold tracking-widest text-slate-400 uppercase">Upload &amp; Manage Media Library</p>
+          <div className="flex items-center gap-4">
+            <Link href="/" title="Go to Website">
+              <Logo className="w-8 h-8" textClassName="text-sm md:text-base" />
+            </Link>
+            <div className="h-5 w-[1px] bg-slate-200 hidden sm:block" />
+            <div className="hidden sm:flex items-center gap-2 px-3 py-1 bg-blue-50 text-blue-600 rounded-full text-[10px] font-black tracking-widest uppercase border border-blue-200">
+              Admin Portal
             </div>
           </div>
 
-          <button
-            onClick={handleLogout}
-            className="flex items-center gap-2 px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-red-600 transition-all text-xs font-black tracking-widest uppercase rounded-xl border border-slate-200"
-          >
-            <LogOut className="w-4 h-4" />
-            Sign Out
-          </button>
+          <div className="flex items-center gap-3">
+            <Link
+              href="/"
+              target="_blank"
+              className="hidden md:flex items-center gap-1.5 px-4 py-2 text-slate-600 hover:text-blue-600 text-xs font-bold tracking-wider uppercase transition-colors"
+            >
+              <span>View Site</span>
+              <ExternalLink className="w-3.5 h-3.5" />
+            </Link>
+
+            <button
+              onClick={handleLogout}
+              className="flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-red-50 text-slate-700 hover:text-red-600 transition-all text-xs font-black tracking-widest uppercase rounded-xl border border-slate-200 cursor-pointer"
+            >
+              <LogOut className="w-3.5 h-3.5" />
+              Sign Out
+            </button>
+          </div>
         </div>
-      </div>
+      </header>
 
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
           {/* Form Sidebar */}
           <div className="col-span-1">
-            <div className="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm sticky top-28 space-y-6">
+            <div className="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm sticky top-20 space-y-6">
               <div className="flex items-center gap-3 border-b border-slate-100 pb-4">
                 <div className="p-2 bg-blue-50 text-blue-600 rounded-xl">
                   <Plus className="w-5 h-5" />

@@ -22,7 +22,6 @@ export default async function OpenGraphImage() {
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={absoluteUrl("/logo.png")}
             alt=""

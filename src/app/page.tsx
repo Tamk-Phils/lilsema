@@ -4,7 +4,6 @@ import Link from "next/link";
 import { ArrowRight, Camera, Users, Video } from "lucide-react";
 import Image from "next/image";
 import Hero from "@/components/Hero";
-import Footer from "@/components/Footer";
 import { createPageMetadata } from "@/lib/seo";
 import { getLatestGalleryImages } from "@/lib/gallery";
 
@@ -33,7 +32,7 @@ export default async function Home() {
   const galleryImages = await getLatestGalleryImages(6);
 
   return (
-    <main className="relative min-h-screen bg-slate-50 text-slate-900 selection:bg-blue-500/20">
+    <main className="relative flex-1 bg-slate-50 text-slate-900 selection:bg-blue-500/20">
       <Home3DBackground />
       <Hero />
       <Stats3D />
@@ -160,8 +159,6 @@ export default async function Home() {
           </div>
         </div>
       </section>
-
-      <Footer />
     </main>
   );
 }

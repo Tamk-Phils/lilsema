@@ -3,10 +3,10 @@
 import { motion } from 'framer-motion';
 
 const shapes = [
-  { size: 120, x: '8%', y: '12%', delay: 0, duration: 18, color: 'rgba(59,130,246,0.15)' },
-  { size: 80, x: '85%', y: '18%', delay: 2, duration: 22, color: 'rgba(255,255,255,0.06)' },
-  { size: 160, x: '72%', y: '68%', delay: 1, duration: 26, color: 'rgba(59,130,246,0.1)' },
-  { size: 60, x: '15%', y: '75%', delay: 3, duration: 20, color: 'rgba(255,255,255,0.08)' },
+  { size: 140, x: '8%', y: '12%', delay: 0, duration: 22, color: 'rgba(37,99,235,0.08)', border: 'rgba(59,130,246,0.18)' },
+  { size: 90, x: '85%', y: '18%', delay: 2, duration: 26, color: 'rgba(96,165,250,0.07)', border: 'rgba(147,197,253,0.25)' },
+  { size: 180, x: '72%', y: '68%', delay: 1, duration: 30, color: 'rgba(37,99,235,0.06)', border: 'rgba(59,130,246,0.15)' },
+  { size: 70, x: '15%', y: '75%', delay: 3, duration: 24, color: 'rgba(96,165,250,0.08)', border: 'rgba(147,197,253,0.2)' },
 ];
 
 export default function Home3DBackground() {
@@ -16,13 +16,14 @@ export default function Home3DBackground() {
         {shapes.map((shape, i) => (
           <motion.div
             key={i}
-            className="absolute rounded-2xl border border-white/10 will-change-transform"
+            className="absolute rounded-3xl will-change-transform shadow-sm"
             style={{
               width: shape.size,
               height: shape.size,
               left: shape.x,
               top: shape.y,
-              background: `linear-gradient(135deg, ${shape.color}, transparent)`,
+              border: `1px solid ${shape.border}`,
+              background: `linear-gradient(135deg, ${shape.color}, rgba(255,255,255,0.02))`,
               transformStyle: 'preserve-3d',
             }}
             animate={{
@@ -40,14 +41,14 @@ export default function Home3DBackground() {
         ))}
 
         <motion.div
-          className="absolute left-1/2 top-1/3 h-[500px] w-[500px] -translate-x-1/2 rounded-full border border-blue-500/10 will-change-transform"
+          className="absolute left-1/2 top-1/3 h-[500px] w-[500px] -translate-x-1/2 rounded-full border border-blue-400/20 will-change-transform"
           style={{ transform: 'rotateX(75deg)' }}
           animate={{ rotateZ: 360 }}
           transition={{ duration: 40, repeat: Infinity, ease: 'linear' }}
         />
       </div>
 
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(37,99,235,0.12),_transparent_55%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(37,99,235,0.08),_transparent_60%)]" />
     </div>
   );
 }

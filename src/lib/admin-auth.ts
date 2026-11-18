@@ -69,7 +69,7 @@ export async function verifySessionToken(token: string): Promise<boolean> {
   const [payloadB64, sig] = token.split(".");
   if (!payloadB64 || !sig) return false;
 
-  let payload = base64urlDecode(payloadB64);
+  const payload = base64urlDecode(payloadB64);
   if (!payload) return false;
 
   const [username, expStr] = payload.split(":");

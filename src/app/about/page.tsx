@@ -7,7 +7,7 @@ import Link from 'next/link';
 
 export default function AboutPage() {
   return (
-    <main className="pt-32 pb-24 px-4 bg-slate-50 min-h-screen text-slate-900">
+    <main className="pt-32 pb-24 px-4 bg-slate-50 min-h-screen text-slate-900 flex-1">
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
           <motion.div

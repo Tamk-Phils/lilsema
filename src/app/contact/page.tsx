@@ -9,7 +9,7 @@ export default function ContactPage() {
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent("Hello Lil Sema, I'd like to book a session.")}`;
 
   return (
-    <main className="pt-32 pb-24 px-4 bg-slate-50 min-h-screen text-slate-900">
+    <main className="pt-32 pb-24 px-4 bg-slate-50 min-h-screen text-slate-900 flex-1">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-24">
           <div className="space-y-8">

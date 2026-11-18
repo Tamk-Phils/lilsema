@@ -15,7 +15,7 @@ export default function Booking() {
           <div>
             <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">Ready to Capture <br /> Your Vision?</h2>
             <p className="text-lg text-white/50 mb-8 max-w-md">
-              Whether it's a portrait, an event, or a commercial shoot, we're here to make it professional.
+              Whether it&apos;s a portrait, an event, or a commercial shoot, we&apos;re here to make it professional.
             </p>
             
             <div className="space-y-6">
